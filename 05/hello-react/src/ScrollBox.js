@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class ScrollBox extends Component {
+
   scrollToBottom = () => {
     const { scrollHeight, clientHeight } = this.box;
     /* 위 코드에는 비구조화 할당(destructuring assignment) 문법이 사용되었습니다.
@@ -11,7 +12,7 @@ class ScrollBox extends Component {
     this.box.scrollTop = scrollHeight - clientHeight;
   }
 
-  
+
   render() {
     const style = {
       border: '1px solid black',
@@ -28,7 +29,7 @@ class ScrollBox extends Component {
     }
 
     return (
-      <div 
+      <div
         style={style}
         ref={(ref) => { this.box=ref }}>
         <div style={innerStyle}/>
