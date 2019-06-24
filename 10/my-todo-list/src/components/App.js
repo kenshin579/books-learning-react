@@ -43,6 +43,7 @@ class App extends Component {
 
     //to do 아이템 토글하기
     handleToggle = (id) => {
+        console.log('handleToggle');
         //id로 배열의 인덱스를 찾습니다.
         const {todos} = this.state;
         const index = todos.findIndex(todo => todo.id === id);
@@ -57,23 +58,35 @@ class App extends Component {
         //그리고 그 사이에는 변경된 to do 객체를 넣어줌
 
         this.setState({
-           todos: [
-               ...todos.slice(0, index),
-               toggled,
-               ...todos.slice(index+1, todos.length)
-           ]
+            todos: [
+                ...todos.slice(0, index),
+                toggled,
+                ...todos.slice(index + 1, todos.length)
+            ]
+        });
+    };
+
+    handleRemove = (id) => {
+        console.log('handleRemove');
+        const {todos} = this.state;
+        const index = todos.findIndex(todo => todo.id === id);
+        this.setState({
+            todos: [
+                ...todos.slice(0, index),
+                ...todos.slice(index + 1, todos.length)
+            ]
         });
     };
 
     render() {
         const {input, todos} = this.state; //this.state을 하지 않아도 됨
-        const {handleChange, handleInsert, handleToggle} = this;
+        const {handleChange, handleInsert, handleToggle, handleRemove} = this;
 
         return (
             <PageTemplate>
                 {/*<TodoInput onChange={this.handleChange()} value={this.state.input}/>*/}
                 <TodoInput onChange={handleChange} onInsert={handleInsert} value={input}/>
-                <TodoList todos={todos} onToggle={handleToggle}/>
+                <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
             </PageTemplate>
         );
     }
