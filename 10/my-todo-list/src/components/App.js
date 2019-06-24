@@ -13,6 +13,12 @@ class App extends Component {
         ]
     };
 
+    //일정 데이터 안에 들어가는 id 값
+    id = 1;
+    getId = () => {
+        return ++this.id; //현재 값에서 1을 더한 값을 반환
+    };
+
     handleChange = (e) => {
         const {value} = e.target;
         this.setState({
@@ -20,14 +26,29 @@ class App extends Component {
         });
     };
 
+    //새로운 데이터 추가
+    handleInsert = () => {
+        const {todos, input} = this.state;
+        const newTodo = {
+            text: input,
+            done: false,
+            id: this.getId()
+        };
+
+        this.setState({
+            todos: [...todos, newTodo], //...은 todos을 복사한다는 의미임
+            input: ''
+        });
+    };
+
     render() {
         const {input, todos} = this.state; //this.state을 하지 않아도 됨
-        const {handleChange} = this;
+        const {handleChange, handleInsert} = this;
 
         return (
             <PageTemplate>
                 {/*<TodoInput onChange={this.handleChange()} value={this.state.input}/>*/}
-                <TodoInput onChange={handleChange} value={input}/>
+                <TodoInput onChange={handleChange} onInsert={handleInsert} value={input}/>
                 <TodoList todos={todos}/>
             </PageTemplate>
         );
