@@ -8,14 +8,14 @@ const cx = classNames.bind(styles);
   그리고 타이틀 / 콘텐츠 등의 속성이 설정되어 있습니다. */
 
 const PageTemplate = ({children}) => {
-  return (
-    <div className={cx('page-template')}>
-      <h1>일정 관리</h1>
-      <div className={cx('content')}>
-        {children}
-      </div>
-    </div>
-  );
+    return (
+        <div className={cx('page-template')}>
+            <h1>일정 관리</h1>
+            <div className={cx('content')}>
+                {children}
+            </div>
+        </div>
+    );
 };
 
 export default PageTemplate;
