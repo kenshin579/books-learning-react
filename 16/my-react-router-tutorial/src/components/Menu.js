@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const Menu = () => {
     const activeStyle = {
@@ -19,4 +19,4 @@ const Menu = () => {
     );
 };
 
-export default withRouter(Menu);
+export default Menu;
