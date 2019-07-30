@@ -1,38 +1,15 @@
-import * as types from '../actions/ActionTypes';
-
-// 초기 상태를 정의합니다.
-const initialState = {
-    color: 'black',
-    number: 0
-};
+import number from './number';
+import color from './color';
+import {combineReducers} from 'redux';
 
 /*
-리둑서 함수를 정의함. 리듀서는 state와 action을 파라미터로 받는다.
-state가 undefined일 때 (스토어가 생성될 때), state 기본 값을 initialState로 사용합니다.
-action.type에 따라 다른 작업을 하고, 새 상태를 만들어서 반환합니다.
-이때 주의할 점은 state를 직접 수정하면 안되고, 기존 상태 값에 원하는 값을 덮어 쓴 새로운 객체를 만들어서 반환해야 함
+서브 리듀서들을 하나로 합친다.
+combineReducers를 실행하고 나면, 나중에 store 형태를 파라미터로 전달한 객체 모양대로 만듬
+지금은 다음과 같이 만들어짐
  */
-function counter(state = initialState, action) {
-    console.log("[FRANK] state", JSON.stringify(state), 'action.type', action.type);
-    switch (action.type) {
-        case types.INCREMENT:
-            return {
-                ...state,
-                number: state.number + 1
-            };
-        case types.DECREMENT:
-            return {
-                ...state,
-                number: state.number - 1
-            };
-        case types.SET_COLOR:
-            return {
-                ...state,
-                color: action.color
-            };
-        default:
-            return state;
-    }
-}
+const reducers = combineReducers({
+    numberData : number,
+    colorData : color
+});
 
-export default counter;
+export default reducers;
