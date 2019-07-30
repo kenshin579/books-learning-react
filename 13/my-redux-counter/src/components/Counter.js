@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Counter.css';
 
 const Counter = ({number, color, onIncrement, onDecrement, onSetColor}) => {
+    console.log("[FRANK] Counter :: number", number, "color", color);
     return (
         <div className="Counter"
              onClick={onIncrement}

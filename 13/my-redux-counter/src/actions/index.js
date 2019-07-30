@@ -6,27 +6,16 @@
 import * as types from './ActionTypes';
 
 //이건 객체를 생성해서 반환하는 함수를 정의함
-export const create = (color) => ({
-    type: types.CREATE,
-    color
+
+export const increment = () => ({
+    type: types.INCREMENT
 });
 
-export const remove = () => ({
-    type: types.REMOVE
+export const decrement = () => ({
+    type: types.DECREMENT
 });
 
-export const increment = (index) => ({
-    type: types.INCREMENT,
-    index
-});
-
-export const decrement = (index) => ({
-    type: types.DECREMENT,
-    index
-});
-
-export const setColor = ({index, color}) => ({
+export const setColor = ({color}) => ({
     type: types.SET_COLOR,
-    index,
     color
 });

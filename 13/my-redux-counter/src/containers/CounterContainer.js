@@ -48,9 +48,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 // Counter 컴포넌트의 Container 컴포넌트
 // Counter 컴포넌트를 애플리케이션의 데이터 레이어와 묶는 역할을 합니다.
-const CounterContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Counter);
+const CounterContainer = connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 export default CounterContainer;
