@@ -17,17 +17,15 @@ class App extends Component {
         }
     };
 
-    loadData = () => {
+    loadData = async () => {
         const {PostActions, number} = this.props;
-        PostActions.getPost(number).then(
-            (response) => {
-                console.log(response);
-            }
-        ).catch(
-            (error) => {
-                console.log(error);
-            }
-        )
+        try {
+            const response = await PostActions.getPost(number);
+            console.log('response', response);
+        } catch (e) {
+            console.log('e', e);
+        }
+
     };
 
     render() {
