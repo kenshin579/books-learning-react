@@ -49,7 +49,6 @@ export default applyPenders(reducer, [
                 }
             }
         }
-
     },
     /*
       다른 pender 액션들
