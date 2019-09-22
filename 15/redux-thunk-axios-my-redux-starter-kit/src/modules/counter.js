@@ -29,4 +29,4 @@ export const decrementAsync = () => dispatch => {
 export default handleActions({
     [INCREMENT]: (state, action) => state + 1,
     [DECREMENT]: (state, action) => state - 1
-}, 0);
+}, 1); //postId의 기본 값은 0대신 1로 함
