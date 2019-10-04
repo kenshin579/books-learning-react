@@ -460,8 +460,9 @@ module.exports = function(webpackEnv) {
               ).concat({
                 loader: require.resolve('sass-loader'),
                 options: {
-                  includePaths:[paths.appSrc + '/styles'],
-                  data : `@import 'utils';`
+                  sassOptions: {
+                    includePaths:[paths.globalStyles]
+                  }
                 }
               }),
               // Don't consider CSS imports dead code even if the
