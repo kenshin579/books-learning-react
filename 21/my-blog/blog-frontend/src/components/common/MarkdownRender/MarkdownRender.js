@@ -43,7 +43,7 @@ class MarkdownRender extends Component {
 
         // 서버사이드 렌더링에서도 마크다운 처리가 되도록 constructor 쪽에서도 구현합니다.
         this.state = {
-            html: markdown ? marked(props.markdown.markdown) : ''
+            html: markdown ? marked(props.markdown) : ''
         }
     }
 
@@ -56,6 +56,10 @@ class MarkdownRender extends Component {
         if (prevState.html !== this.state.html) {
             Prism.highlightAll();
         }
+    }
+
+    componentDidMount() {
+        Prism.highlightAll();
     }
 
     render() {
