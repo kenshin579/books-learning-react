@@ -39,16 +39,25 @@ class MarkdownRender extends Component {
 
     createHtml = (markdown) => {
         if (markdown && markdown.markdown === '') {
+            console.log('===>1');
             return '';
+        } else if (markdown && markdown.markdown !== '') { //목록에서 클릭시
+
+            if (typeof markdown === 'string') {
+                console.log('===>2a');
+                return marked(markdown);
+            }
+            console.log('===>2b');
+            return marked(markdown.markdown);
         }
-        if (markdown) { //목록에서 클릭시
-            return marked(markdown);
-        }
+        console.log('===>3');
+        return '';
     };
 
     constructor(props) {
         super(props);
         const {markdown} = props;
+        console.log('markdown', markdown);
 
         // 서버사이드 렌더링에서도 마크다운 처리가 되도록 constructor 쪽에서도 구현합니다.
         this.state = {
