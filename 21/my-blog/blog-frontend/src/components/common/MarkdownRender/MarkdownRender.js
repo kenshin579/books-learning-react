@@ -37,13 +37,23 @@ class MarkdownRender extends Component {
         });
     };
 
+    createHtml = (markdown) => {
+        if (markdown && markdown.markdown === '') {
+            return '';
+        }
+        if (markdown) { //목록에서 클릭시
+            return marked(markdown);
+        }
+    };
+
     constructor(props) {
         super(props);
         const {markdown} = props;
 
         // 서버사이드 렌더링에서도 마크다운 처리가 되도록 constructor 쪽에서도 구현합니다.
         this.state = {
-            html: markdown ? marked(props.markdown) : ''
+            html: this.createHtml(markdown)
+            // html: markdown ? marked(markdown) : ''
         }
     }
 
