@@ -36,7 +36,7 @@ class EditorHeaderContainer extends Component {
         try {
             // id가 존재하는 경우 editPost 호출
             const {id} = queryString.parse(location.search);
-            if (id) {
+            if (id) { //기존 데이터를 수정하는 경우에 호출함
                 await EditorActions.editPost({id, ...post});
                 history.push(`/post/${id}`);
                 return;
