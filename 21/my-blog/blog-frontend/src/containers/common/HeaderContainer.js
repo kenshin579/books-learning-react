@@ -8,7 +8,8 @@ import {bindActionCreators} from 'redux';
 
 class HeaderContainer extends Component {
     handleRemove = () => {
-        //미리 만들어 두기
+        const {BaseActions} = this.props;
+        BaseActions.showModal('remove');
     };
 
     render() {
@@ -26,4 +27,9 @@ class HeaderContainer extends Component {
     }
 }
 
-export default withRouter(HeaderContainer);
+export default connect(
+    (state) => ({}),
+    (dispatch) => ({
+        BaseActions: bindActionCreators(baseActions, dispatch)
+    })
+)(withRouter(HeaderContainer));
