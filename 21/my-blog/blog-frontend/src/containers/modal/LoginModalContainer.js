@@ -6,7 +6,15 @@ import * as baseActions from 'store/modules/base';
 
 class LoginModalContainer extends Component {
     handleLogin = async () => {
-
+        const {BaseActions, password} = this.props;
+        try {
+            // 로그인 시도, 성공 시 모달 닫기
+            await BaseActions.login(password);
+            BaseActions.hideModal('login');
+            localStorage.logged = "true";
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     handleCancel = () => {
@@ -15,11 +23,16 @@ class LoginModalContainer extends Component {
     };
 
     handleChange = (e) => {
-
+        const {value} = e.target;
+        const {BaseActions} = this.props;
+        BaseActions.changePasswordInput(value);
     };
 
     handleKeyPress = (e) => {
-
+        // 엔터 키가 눌리면 로그인 호출
+        if (e.key === 'Enter') {
+            this.handleLogin();
+        }
     };
 
     render() {
