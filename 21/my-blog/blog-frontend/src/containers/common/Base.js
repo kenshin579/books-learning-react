@@ -6,7 +6,11 @@ import * as baseActions from 'store/modules/base';
 
 class Base extends Component {
     initialize = async () => {
-        //로그인 상태 확인(추후 작성)
+        const {BaseActions} = this.props;
+        if (localStorage.logged === 'true') {
+            BaseActions.tempLogin();
+        }
+        await BaseActions.checkLogin();
     };
 
 

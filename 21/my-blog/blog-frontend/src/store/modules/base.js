@@ -23,6 +23,7 @@ export const logout = createAction(LOGOUT, api.logout);
 export const checkLogin = createAction(CHECK_LOGIN, api.checkLogin);
 export const changePasswordInput = createAction(CHANGE_PASSWORD_INPUT);
 export const initializeLoginModal = createAction(INITIALIZE_LOGIN_MODAL);
+export const tempLogin = createAction(TEMP_LOGIN);
 
 
 // initial state
@@ -73,5 +74,8 @@ export default handleActions({
     [INITIALIZE_LOGIN_MODAL]: (state, action) => {
         // 로그인 모달의 상태를 초기 상태로 설정합니다(텍스트/에러 초기화).
         return state.set('loginModal', initialState.get('loginModal'));
+    },
+    [TEMP_LOGIN]: (state, action) => {
+        return state.set('logged', true);
     }
 }, initialState);
