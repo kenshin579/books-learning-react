@@ -8,6 +8,7 @@ const initialState = {
 const INCREMENT = 'INCREMENT';
 const DECREMENT = 'DECREMENT';
 
+//액션은 객체 형태로 되어 있음
 const increment = (diff) => ({
     type: INCREMENT,
     diff: diff
@@ -20,6 +21,7 @@ const decrement = (diff) => ({
 });
 
 
+//reducer가 전달 받은 액션을
 function counter(state = initialState, action) {
     switch (action.type) {
         case INCREMENT :
