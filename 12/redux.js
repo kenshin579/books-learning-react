@@ -21,7 +21,7 @@ const decrement = (diff) => ({
 });
 
 
-//reducer가 전달 받은 액션을
+//reducer가 전달 받은 액션을 기반으로 상태를 어떻게 변경시켜야 할지 정함
 function counter(state = initialState, action) {
     switch (action.type) {
         case INCREMENT :
