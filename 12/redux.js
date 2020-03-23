@@ -1,5 +1,5 @@
 const initialState = {
-    number : 1,
+    number: 1,
     foo: 'bar',
     baz: 'qux'
 };
@@ -8,12 +8,15 @@ const initialState = {
 const INCREMENT = 'INCREMENT';
 const DECREMENT = 'DECREMENT';
 
-const increment = () => ({
-    type : INCREMENT
+const increment = (diff) => ({
+    type: INCREMENT,
+    diff: diff
+
 });
 
-const decrement = () => ({
-    type : DECREMENT
+const decrement = (diff) => ({
+    type: DECREMENT,
+    diff: diff
 });
 
 
@@ -40,7 +43,7 @@ const store = createStore(counter);
 
 //구독
 const unsubscribe = store.subscribe(() => {
-   console.log("subscribe: ", store.getState());
+    console.log("subscribe: ", store.getState());
 });
 
 //distpatch로 액션 전달
