@@ -26,7 +26,7 @@ export default handleActions({
   [GET_POST_PENDING]: (state, action) => {
     return {
       ...state,
-      pending: false,
+      pending: true,
       error: false
     };
   },
